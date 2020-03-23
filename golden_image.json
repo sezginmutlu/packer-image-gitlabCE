@@ -1,0 +1,39 @@
+{   "_comment": "Comment here",
+    "builders": [{
+      "type": "amazon-ebs",
+
+
+      "region": "{{user `region`}}",
+
+
+      "instance_type": "t2.micro",
+      "ssh_username": "centos",
+      "ssh_keypair_name": "packer",
+      "ssh_private_key_file": "/home/centos/.ssh/id_rsa",
+      "ami_name": "golden_image {{timestamp}}",
+
+
+      "source_ami_filter": { 
+        "owners": ["137112412989"], 
+        "most_recent": true 
+      }
+    }],
+
+    "_comment2": "Comment here",
+    "provisioners": [
+        {
+            "type": "file",
+            "source": "./test.txt",
+            "destination": "/tmp/"
+        },
+        {
+            "type": "shell",
+            "inline":[
+                "sudo yum update -y",
+                "sudo yum install ansible -y",
+                "sudo dnf install ansible -y"
+            ]
+        }
+        
+    ]
+}
