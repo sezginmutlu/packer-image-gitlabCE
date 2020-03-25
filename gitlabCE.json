@@ -31,7 +31,7 @@
             "inline":[
                 "sudo yum update -y",
                 "sudo yum install ansible -y",
-                "curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | sudo bash -y",
+                "sudo curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | sudo bash -y",
                 "sudo yum install gitlab-ce -y",
                 "sudo firewall-cmd --permanent --zone=public --add-service=http -y",
                 "sudo firewall-cmd --permanent --zone=public --add-service=https -y",
